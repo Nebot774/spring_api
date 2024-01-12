@@ -33,6 +33,7 @@ public class DriverRestController {
 
     }
 
+    //POST http://localhost:8080/api/drivers/
     @PostMapping("/drivers")
     public ResponseEntity<Driver> create(@RequestBody Driver driver){
         // Verificar si el ID del conductor ya está establecido
@@ -47,8 +48,21 @@ public class DriverRestController {
         return ResponseEntity.ok(driver);
     }
 
+    //POST http://localhost:8080/api/drivers/
+    @PutMapping("/drivers")
+    public ResponseEntity<Driver> update(@RequestBody Driver driver){
+        this.driverService.saveDriver(driver);
+        return ResponseEntity.ok(driver);
+
+    }
 
 
+    //DELETE http://localhost:8080/api/drivers/alo
+    @DeleteMapping("/drivers/{code}")
+    public ResponseEntity<Driver> deleteByCode(@PathVariable String code){
+        this.driverService.deleteDriverByCode(code);
+        return ResponseEntity.noContent().build();
+    }
 
 
 }

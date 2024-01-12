@@ -14,4 +14,7 @@ public interface DriverService {
     //definicion metodo guardar driver
     Driver saveDriver(Driver driver);
 
+    //definicion metodo borrar driver por codigo
+    void deleteDriverByCode(String code);
+
 }

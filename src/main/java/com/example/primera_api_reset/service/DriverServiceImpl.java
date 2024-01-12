@@ -2,6 +2,7 @@ package com.example.primera_api_reset.service;
 
 import com.example.primera_api_reset.model.Driver;
 import com.example.primera_api_reset.repository.DriverRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,16 @@ public class DriverServiceImpl implements DriverService{
     public Driver saveDriver(Driver driver) {
         return repository.save(driver);
     }
+
+    //implementacion metodo borrar piloto por ID
+    @Override
+    @Transactional
+    public void deleteDriverByCode(String code) {
+        repository.deleteByCode(code);
+    }
+
+
+
 
 
 }
