@@ -10,4 +10,5 @@ public class PrimeraApiResetApplication {
         SpringApplication.run(PrimeraApiResetApplication.class, args);
     }
 
+
 }

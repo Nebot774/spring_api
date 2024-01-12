@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DriverServiceImpl implements DriverService{
@@ -22,6 +23,17 @@ public class DriverServiceImpl implements DriverService{
         return repository.findAll();
     }
 
+    //implementacion metodo buscar driver por ID
+    @Override
+    public Optional<Driver> getDriverByCode(String code) {
+        return repository.findByCodeIgnoreCase(code);
+    }
+
+    //implementacion metodo guardar driver
+    @Override
+    public Driver saveDriver(Driver driver) {
+        return repository.save(driver);
+    }
 
 
 }
