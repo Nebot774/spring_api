@@ -39,7 +39,6 @@ public class DriverServiceImpl implements DriverService{
 
     //implementacion metodo borrar piloto por ID
     @Override
-    @Transactional
     public void deleteDriverByCode(String code) {
         repository.deleteByCode(code);
     }

@@ -16,8 +16,5 @@ public interface DriverRepository extends JpaRepository<Driver, Long> {
     Optional<Driver> findByCodeIgnoreCase(String code);
 
     //metodo borrar driver por id
-    @Transactional
-    @Modifying
-    @Query("DELETE FROM Driver d WHERE d.code = :code")
     void deleteByCode(String code);
 }
