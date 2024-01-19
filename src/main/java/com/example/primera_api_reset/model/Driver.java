@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,5 +26,7 @@ public class Driver {
     private String nationality;
     private String url;
 
+    @OneToMany(mappedBy = "driver",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<Constructor> constructores= new ArrayList<>();
 
 }

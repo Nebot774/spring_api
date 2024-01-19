@@ -29,4 +29,8 @@ public class Constructor {
     @Column(name = "url")
     private String url;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "driverid", referencedColumnName = "driverid")
+    private Driver driver;
+
 }
