@@ -28,18 +28,18 @@ public class CircuitServiceImpl implements CircuitService {
 
     @Override
     public Optional<Circuit> getCircuitByName(String name) {
-        return Optional.empty();
+        return  circuitRepository.findByName(name);
     }
 
 
     @Override
     public Circuit saveCircuit(Circuit circuit) {
-        return null;
+        return circuitRepository.save(circuit);
     }
 
     @Override
     public void deleteCircuitByName(String name) {
-
+         circuitRepository.deleteByName(name);
     }
 
 
