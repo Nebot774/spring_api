@@ -1,5 +1,6 @@
 package com.example.primera_api_reset.service;
 
+import com.example.primera_api_reset.model.Circuit;
 import com.example.primera_api_reset.model.Race;
 import com.example.primera_api_reset.repository.RaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class RaceServiceImpl implements RaceService {
     }
 
     @Override
-    public List<Race> getRacesByCircuitId(Integer circuitId) {
-        return raceRepository.findByCircuitid(circuitId);
+    public List<Race> getRacesByCircuitId(Circuit circuitId) {
+        return raceRepository.findByCircuit(circuitId);
     }
 
     @Override

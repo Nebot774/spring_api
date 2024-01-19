@@ -1,5 +1,6 @@
 package com.example.primera_api_reset.controller;
 
+import com.example.primera_api_reset.model.Circuit;
 import com.example.primera_api_reset.model.Race;
 import com.example.primera_api_reset.service.RaceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,13 @@ public class RaceRestController {
         this.raceService = raceService;
     }
 
-    @GetMapping
+    @GetMapping("/circuit")
     public ResponseEntity<List<Race>> getAllRaces() {
         return ResponseEntity.ok(raceService.getAllRaces());
     }
 
     @GetMapping("/circuit/{circuitId}")
-    public ResponseEntity<List<Race>> getRacesByCircuitId(@PathVariable Integer circuitId) {
+    public ResponseEntity<List<Race>> getRacesByCircuitId(@PathVariable Circuit circuitId) {
         return ResponseEntity.ok(raceService.getRacesByCircuitId(circuitId));
     }
 

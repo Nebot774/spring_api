@@ -1,5 +1,6 @@
 package com.example.primera_api_reset.service;
 
+import com.example.primera_api_reset.model.Circuit;
 import com.example.primera_api_reset.model.Race;
 
 import java.util.List;
@@ -9,7 +10,7 @@ public interface RaceService {
 
     List<Race> getAllRaces();
 
-    List<Race> getRacesByCircuitId(Integer circuitId);
+    List<Race> getRacesByCircuitId(Circuit circuitId);
 
     Race saveRace(Race race);
 

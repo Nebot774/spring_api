@@ -1,5 +1,6 @@
 package com.example.primera_api_reset.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -22,8 +23,12 @@ public class Race {
     @Column(name = "round")
     private Integer round;
 
-    @Column(name = "circuitid")
-    private Integer circuitid;
+
+    //clave foranea
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "circuitid", referencedColumnName = "circuitid")
+    private Circuit circuit;
 
     @Column(name = "name")
     private String name;
@@ -37,5 +42,6 @@ public class Race {
     @Column(name = "url")
     private String url;
 
-    // Constructores, getters y setters
+
+
 }
