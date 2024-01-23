@@ -36,15 +36,15 @@ public class DriverRestController {
     //POST http://localhost:8080/api/drivers/
     @PostMapping("/drivers")
     public ResponseEntity<Driver> create(@RequestBody Driver driver){
-        // Verificar si el ID del conductor ya está establecido
+
         if(driver.getDriverId() != null)
-            // Si el ID del conductor no es null, se devuelve una respuesta de error
+
             return ResponseEntity.badRequest().build();
 
-        // Guardar el objeto Driver en la base de datos
+
         this.driverService.saveDriver(driver);
 
-        // Devolver una respuesta HTTP 200 OK con el objeto Driver en el cuerpo
+
         return ResponseEntity.ok(driver);
     }
 

@@ -1,5 +1,7 @@
 package com.example.primera_api_reset.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -26,7 +28,8 @@ public class Driver {
     private String nationality;
     private String url;
 
-    @OneToMany(mappedBy = "driver",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<Constructor> constructores= new ArrayList<>();
+
+    @OneToMany(mappedBy = "driver", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Constructor> constructores = new ArrayList<>();
 
 }
