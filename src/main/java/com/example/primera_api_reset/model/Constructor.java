@@ -33,8 +33,10 @@ public class Constructor {
     @Column(name = "url")
     private String url;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "driverid", referencedColumnName = "driverid")
-    private Driver driver;
+
+    @OneToMany(mappedBy = "constructor",
+            cascade = CascadeType.ALL)
+    private List<Driver> driverList;
+
 
 }

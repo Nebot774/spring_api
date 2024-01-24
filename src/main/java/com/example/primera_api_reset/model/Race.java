@@ -25,7 +25,6 @@ public class Race {
 
 
     //clave foranea
-    @JsonBackReference
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "circuitid", referencedColumnName = "circuitid")
     private Circuit circuit;
