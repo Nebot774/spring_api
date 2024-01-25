@@ -1,27 +1,42 @@
 package com.example.primera_api_reset.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "new_results")
+@Table(name = "results")
 public class Result {
-    @EmbeddedId
-    private ResultKey id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "resultid")
+    private Long resultId;
 
     @ManyToOne
-    @MapsId("raceid")
-    @JoinColumn(name = "race_id", referencedColumnName = "raceid")
+    @JoinColumn(name = "raceid", referencedColumnName = "raceid")
     private Race race;
 
     @ManyToOne
-    @MapsId("driverid")
-    @JoinColumn(name = "driver_id", referencedColumnName = "driverid")
+    @JoinColumn(name = "driverid", referencedColumnName = "driverid")
+    @JsonBackReference
     private Driver driver;
 
+
+    @Column(name = "grid", nullable = false)
+    private Integer grid;
+
+    @Column(name = "position")
+    private Integer position;
+
+    @Column(name = "points", nullable = false)
+    private Integer points;
+
     @Column(name = "resultado")
-    String resultado;//atributo resultado agregado
+    private String resultado; // Atributo resultado agregado
+
 
 }
+
 

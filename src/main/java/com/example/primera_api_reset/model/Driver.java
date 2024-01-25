@@ -37,6 +37,7 @@ public class Driver {
     //relacion con resultado
     //almacenamos array de resultados
     @OneToMany(mappedBy = "driver")
+    @JsonManagedReference
     private Set<Result> results = new HashSet<>();
 
 
