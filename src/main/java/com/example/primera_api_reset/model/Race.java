@@ -7,6 +7,8 @@ import lombok.Data;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -41,6 +43,8 @@ public class Race {
     @Column(name = "url")
     private String url;
 
+    @OneToMany(mappedBy = "race")
+    private Set<Result> results = new HashSet<>();
 
 
 }
