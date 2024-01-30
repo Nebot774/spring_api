@@ -14,13 +14,12 @@ public class Result {
     @Column(name = "resultid")
     private Long resultId;
 
-    @ManyToOne
-    @JoinColumn(name = "raceid", referencedColumnName = "raceid")
-    private Race race;
+    //@ManyToOne
+    //@JoinColumn(name = "raceid", referencedColumnName = "raceid")
+    //private Race race;
 
     @ManyToOne
-    @JoinColumn(name = "driverid", referencedColumnName = "driverid")
-    @JsonBackReference
+    @JoinColumn(name = "driverid")
     private Driver driver;
 
 

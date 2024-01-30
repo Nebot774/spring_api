@@ -34,9 +34,9 @@ public class Constructor {
     private String url;
 
 
-    @OneToMany(mappedBy = "constructor",
-            cascade = CascadeType.ALL)
-    private List<Driver> driverList;
+    //@OneToMany(mappedBy = "constructor",
+            //cascade = CascadeType.ALL)
+    //private List<Driver> driverList;
 
 
 }

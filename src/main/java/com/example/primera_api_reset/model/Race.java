@@ -1,6 +1,7 @@
 package com.example.primera_api_reset.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -43,8 +44,10 @@ public class Race {
     @Column(name = "url")
     private String url;
 
-    @OneToMany(mappedBy = "race")
-    private Set<Result> results = new HashSet<>();
+
+    //@OneToMany(mappedBy = "race")
+    //@JsonIgnore
+    //private Set<Result> results = new HashSet<>();
 
 
 }
