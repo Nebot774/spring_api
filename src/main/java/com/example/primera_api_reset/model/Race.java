@@ -2,9 +2,11 @@ package com.example.primera_api_reset.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 
 import java.sql.Time;
 import java.util.Date;
@@ -18,6 +20,7 @@ public class Race {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "raceid")
     private Long raceid;
 
     @Column(name = "year")
@@ -28,8 +31,10 @@ public class Race {
 
 
     //clave foranea
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "circuitid", referencedColumnName = "circuitid")
+    @JsonManagedReference
+    @OneToOne()
+    @JoinColumn(name = "circuitid")
+    @Cascade(org.hibernate.annotations.CascadeType.PERSIST)
     private Circuit circuit;
 
     @Column(name = "name")
@@ -45,9 +50,9 @@ public class Race {
     private String url;
 
 
-    //@OneToMany(mappedBy = "race")
-    //@JsonIgnore
-    //private Set<Result> results = new HashSet<>();
+    @OneToMany(mappedBy = "race")
+    @JsonIgnore
+    private Set<Result> results = new HashSet<>();
 
 
 }

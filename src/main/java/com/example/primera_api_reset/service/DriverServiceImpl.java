@@ -1,5 +1,6 @@
 package com.example.primera_api_reset.service;
 
+import com.example.primera_api_reset.DTO.DriverDTO;
 import com.example.primera_api_reset.model.Driver;
 import com.example.primera_api_reset.repository.DriverRepository;
 import jakarta.transaction.Transactional;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class DriverServiceImpl implements DriverService{
@@ -19,9 +21,11 @@ public class DriverServiceImpl implements DriverService{
         this.repository = repository;
     }
 
+    //devolver todos los drivers DTO
     @Override
-    public List<Driver> getAllDrivers() {
-        return repository.findAll();
+    public List<DriverDTO> getAllDrivers() {
+        List<Driver> drivers = repository.findAll();
+        return drivers.stream().map(DriverDTO::new).collect(Collectors.toList());
     }
 
     //implementacion metodo buscar driver por ID

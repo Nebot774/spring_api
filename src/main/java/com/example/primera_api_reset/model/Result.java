@@ -2,6 +2,7 @@ package com.example.primera_api_reset.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,12 +15,13 @@ public class Result {
     @Column(name = "resultid")
     private Long resultId;
 
-    //@ManyToOne
-    //@JoinColumn(name = "raceid", referencedColumnName = "raceid")
-    //private Race race;
+    @ManyToOne
+    @JoinColumn(name = "raceid")
+    private Race race;
 
     @ManyToOne
     @JoinColumn(name = "driverid")
+    @JsonIgnoreProperties
     private Driver driver;
 
 
@@ -32,8 +34,8 @@ public class Result {
     @Column(name = "points", nullable = false)
     private Integer points;
 
-    @Column(name = "resultado")
-    private String resultado; // Atributo resultado agregado
+    //@Column(name = "resultado")
+    //private String resultado; // Atributo resultado agregado
 
 
 }

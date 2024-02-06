@@ -1,5 +1,6 @@
 package com.example.primera_api_reset.controller;
 
+import com.example.primera_api_reset.DTO.DriverDTO;
 import com.example.primera_api_reset.model.Driver;
 import com.example.primera_api_reset.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,11 @@ public class DriverRestController {
         this.driverService = driverService;
     }
 
+    //modificado para devolver DTO
     @GetMapping("/drivers")
-    public ResponseEntity<List<Driver>> getAll(){
-        return ResponseEntity.ok(driverService.getAllDrivers());
+    public ResponseEntity<List<DriverDTO>> getAll() {
+        List<DriverDTO> drivers = driverService.getAllDrivers();
+        return ResponseEntity.ok(drivers);
     }
 
     @GetMapping("/drivers/{code}")

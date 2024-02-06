@@ -1,5 +1,7 @@
 package com.example.primera_api_reset.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -40,8 +42,9 @@ public class Circuit {
     private String url;
 
     //RELACION
-    @JsonManagedReference
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "circuit")
+    @JsonBackReference
+    @OneToOne(mappedBy = "circuit")
+    @JsonIgnoreProperties("circuit")
     private Race race;
 
 
