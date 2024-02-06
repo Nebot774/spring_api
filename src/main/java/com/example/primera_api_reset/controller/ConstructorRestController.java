@@ -1,6 +1,7 @@
 package com.example.primera_api_reset.controller;
 
 import com.example.primera_api_reset.model.Constructor;
+import com.example.primera_api_reset.projecton.ConstructorDTO;
 import com.example.primera_api_reset.service.ConstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +29,10 @@ public class ConstructorRestController {
 
     // Obtener un constructor por nombre
     @GetMapping("/constructors/{name}")
-    public ResponseEntity<Optional<Constructor>> getConstructorByName(@PathVariable String name) {
-        return ResponseEntity.ok(constructorService.getConstructorByName(name));
+    public ResponseEntity<Optional<ConstructorDTO>> getConstructorByName(@PathVariable String name) {
+        return this.constructorService.getConstructorByName(name)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     // Crear un nuevo constructor

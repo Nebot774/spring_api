@@ -2,6 +2,7 @@ package com.example.primera_api_reset.service;
 
 import com.example.primera_api_reset.model.Circuit;
 import com.example.primera_api_reset.model.Constructor;
+import com.example.primera_api_reset.projecton.ConstructorDTO;
 import com.example.primera_api_reset.repository.ConstructorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ public class ConstructorServiceImpl implements ConstructorService {
     }
 
     @Override
-    public Optional<Constructor> getConstructorByName(String name) {
+    public Optional<ConstructorDTO> getConstructorByName(String name) {
         return constructorRepository.findByName(name);
     }
 
