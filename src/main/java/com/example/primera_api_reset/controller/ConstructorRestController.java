@@ -29,10 +29,13 @@ public class ConstructorRestController {
 
     // Obtener un constructor por nombre
     @GetMapping("/constructors/{name}")
-    public ResponseEntity<Optional<ConstructorDTO>> getConstructorByName(@PathVariable String name) {
-        return this.constructorService.getConstructorByName(name)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<ConstructorDTO> getConstructorByName(@PathVariable String name) {
+        Optional<ConstructorDTO> constructorDTO = constructorService.getConstructorByName(name);
+        if (constructorDTO.isPresent()) {
+            return ResponseEntity.ok(constructorDTO.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // Crear un nuevo constructor

@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Set;
 public interface ConstructorDTO {
 
-    String getId();
+   // Long getConstructorid();
     String getName();
-    List<DriverDTO> getDrivers();
-
+   // List<DriverDTO> getDrivers();
 }
+
