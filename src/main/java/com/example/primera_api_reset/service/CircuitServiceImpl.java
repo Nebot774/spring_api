@@ -2,10 +2,15 @@ package com.example.primera_api_reset.service;
 
 import com.example.primera_api_reset.model.Circuit;
 import com.example.primera_api_reset.model.Driver;
+import com.example.primera_api_reset.projecton.CircuitoProyeccion;
 import com.example.primera_api_reset.repository.CircuitRepository;
 import com.example.primera_api_reset.repository.DriverRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,7 +47,12 @@ public class CircuitServiceImpl implements CircuitService {
          circuitRepository.deleteByName(name);
     }
 
-
+    @Override
+    public Page<CircuitoProyeccion> getAllCircuitPaged(int pageNo, int pageSize, String sortBy, String sortDirection) {
+        Sort sort = Sort.by(Sort.Direction.fromString(sortDirection), sortBy);
+        Pageable pageable = (Pageable) PageRequest.of(pageNo, pageSize, sort);
+        return circuitRepository.findAllProjectedBy(pageable);
+    }
 
 
 }

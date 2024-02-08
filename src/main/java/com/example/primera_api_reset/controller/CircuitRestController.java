@@ -1,7 +1,9 @@
 package com.example.primera_api_reset.controller;
 
 import com.example.primera_api_reset.model.Circuit;
+import com.example.primera_api_reset.projecton.CircuitoProyeccion;
 import com.example.primera_api_reset.service.CircuitService;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,6 +37,15 @@ public class CircuitRestController {
         return circuitService.getCircuitByName(code)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("")
+    public ResponseEntity<List<CircuitoProyeccion>> getAllPagedAndSorted(@RequestParam(defaultValue = "5") int page,
+                                                                         @RequestParam(defaultValue = "5") int size,
+                                                                         @RequestParam(defaultValue = "code") String sortBy,
+                                                                         @RequestParam(defaultValue = "ASC") String sortDirection) {
+        Page<CircuitoProyeccion> CircuitPage = this.circuitService.getAllCircuitPaged(page, size, sortBy, sortDirection);
+        return ResponseEntity.ok(CircuitPage.getContent());
     }
 
     @PostMapping("/circuits")
