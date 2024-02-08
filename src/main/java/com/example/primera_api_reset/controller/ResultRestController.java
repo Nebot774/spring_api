@@ -19,7 +19,7 @@ public class ResultRestController {
     }
 
     // Obtener todos los resultados
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Result>> getAllResults() {
         List<Result> results = resultService.findAll();
         return ResponseEntity.ok(results);
